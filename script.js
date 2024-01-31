@@ -1,6 +1,6 @@
 let blockSize = 22;
-let rows = 18;
-let cols = 18;
+let rows = 20;
+let cols = 20;
 let board;
 let context;
 let scoreValue = 0;
@@ -15,6 +15,7 @@ let foodY = blockSize * 10;
 let velocityX = 0;
 let velocityY = 0;
 
+let score = -1;
 let gameOver = false;
 
 window.onload = function () {
@@ -81,6 +82,7 @@ function update() {
 function placeFood() {
   foodX = Math.floor(Math.random() * cols) * blockSize;
   foodY = Math.floor(Math.random() * rows) * blockSize;
+  updateScore();
 }
 
 function changeDirection(e) {
@@ -100,4 +102,9 @@ function changeDirection(e) {
     velocityX = 1;
     velocityY = 0;
   }
+}
+
+function updateScore() {
+  score++;
+  document.querySelector(".score").textContent = score;
 }
